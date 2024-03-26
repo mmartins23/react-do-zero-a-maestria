@@ -1,4 +1,4 @@
-# Input data management in react 
+# Input data management in React 
 
 In React, managing input data involves capturing user input from form elements (such as input fields) and updating the component's state with the entered data. This allows you to control and manipulate the form data within your React components. Here's an explanation with code examples:
 
