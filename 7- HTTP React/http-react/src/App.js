@@ -4,6 +4,9 @@ import './App.css';
 // Hooks
 import { useState, useEffect } from 'react';
 
+// 4- Custom Hook
+import { useFetch } from './hooks/useFetch';
+
 // URL for the API
 const url = "http://localhost:3000/products";
 
@@ -11,19 +14,23 @@ const url = "http://localhost:3000/products";
 function App() {
   // State variables for products, name, and price
   const [products, setProducts] = useState([]);
+
+  // 4- Custom Hook
+  const {data : items}  = useFetch(url);
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
 
   // 1- Retrieve data
-  useEffect(() => {
-    // Fetch products data from the API
-    async function fetchData() {
-      const res = await fetch(url); // Fetch data from the API
-      const data = await res.json(); // Convert response to JSON
-      setProducts(data); // Update state with the fetched data
-    }
-    fetchData();
-  }, []) // Empty dependency array to only run once on component mount
+  // useEffect(() => {
+  //   // Fetch products data from the API
+  //   async function fetchData() {
+  //     const res = await fetch(url); // Fetch data from the API
+  //     const data = await res.json(); // Convert response to JSON
+  //     setProducts(data); // Update state with the fetched data
+  //   }
+  //   fetchData();
+  // }, []) // Empty dependency array to only run once on component mount
 
   // 2- Add Products
   const handleSubmit = async (e) => {
@@ -61,7 +68,7 @@ function App() {
       <h2>List of products</h2>
       <ul>
         {/* Render the list of products */}
-        {products.map((product) => (
+        {items && items.map((product) => (
           <li key={product.id}>{product.name} - £{product.price}</li>
         ))}
       </ul>
