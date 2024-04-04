@@ -1,0 +1,23 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Classic T-Shirt",
+        "price": 10.99,
+        "quantity": 50
+      },
+      {
+        "id": 2,
+        "name": "Keyboard",
+        "price": 24.99,
+        "quantity": 30
+      },
+      {
+        "id": 3,
+        "name": "Harry Potter Book",
+        "price": 15.49,
+        "quantity": 20
+      }
+    ]
+  }
+  
