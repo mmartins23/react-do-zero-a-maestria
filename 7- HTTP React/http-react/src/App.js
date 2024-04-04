@@ -2,7 +2,7 @@
 import './App.css';
 
 // Hooks
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // 4- Custom Hook
 import { useFetch } from './hooks/useFetch';
@@ -16,7 +16,7 @@ function App() {
   const [products, setProducts] = useState([]);
 
   // 4- Custom Hook
-  const {data : items}  = useFetch(url);
+  const {data : items, httpConfig, loading}  = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -42,20 +42,23 @@ function App() {
       price,
     }
 
-    // Make a POST request to add the new product
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(product),
-    });
+    // // Make a POST request to add the new product
+    // const res = await fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(product),
+    // });
 
-    // 3- loading data dynamically
-    const addedProduct = await res.json(); // Parse the response as JSON
+    // // 3- loading data dynamically
+    // const addedProduct = await res.json(); // Parse the response as JSON
 
-    // Update the state with the new product added to the existing products
-    setProducts((prevProducts) => [...prevProducts, addedProduct]);
+    // // Update the state with the new product added to the existing products
+    // setProducts((prevProducts) => [...prevProducts, addedProduct]);
+
+    // 5- Refactoring Post
+    httpConfig(product, "POST");
 
     // Clear the input fields after submission
     setName("");
@@ -66,6 +69,7 @@ function App() {
   return (
     <div className="App">
       <h2>List of products</h2>
+      {loading && <p>Loading products .....</p>}
       <ul>
         {/* Render the list of products */}
         {items && items.map((product) => (
