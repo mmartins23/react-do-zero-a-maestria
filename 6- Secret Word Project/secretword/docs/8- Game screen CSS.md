@@ -1,4 +1,4 @@
-Game screen CSS
+# Game screen CSS
 
 Your CSS defines the styling for a game screen. Here's a breakdown of what each part does:
 
