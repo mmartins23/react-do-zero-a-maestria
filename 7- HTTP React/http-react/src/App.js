@@ -1,7 +1,5 @@
-// CSS Style
 import './App.css';
 
-// Hooks
 import { useState } from 'react';
 
 // 4- Custom Hook
@@ -10,27 +8,14 @@ import { useFetch } from './hooks/useFetch';
 // URL for the API
 const url = "http://localhost:3000/products";
 
-// App component
 function App() {
-  // State variables for products, name, and price
   const [products, setProducts] = useState([]);
 
-  // 4- Custom Hook
-  const {data : items, httpConfig, loading, error}  = useFetch(url);
+  // 4- Custom Hook and 5- Refactor Post
+  const { data: items, httpConfig, loading, error } = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-
-  // 1- Retrieve data
-  // useEffect(() => {
-  //   // Fetch products data from the API
-  //   async function fetchData() {
-  //     const res = await fetch(url); // Fetch data from the API
-  //     const data = await res.json(); // Convert response to JSON
-  //     setProducts(data); // Update state with the fetched data
-  //   }
-  //   fetchData();
-  // }, []) // Empty dependency array to only run once on component mount
 
   // 2- Add Products
   const handleSubmit = async (e) => {
@@ -40,22 +25,7 @@ function App() {
     const product = {
       name,
       price,
-    }
-
-    // // Make a POST request to add the new product
-    // const res = await fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(product),
-    // });
-
-    // // 3- loading data dynamically
-    // const addedProduct = await res.json(); // Parse the response as JSON
-
-    // // Update the state with the new product added to the existing products
-    // setProducts((prevProducts) => [...prevProducts, addedProduct]);
+    };
 
     // 5- Refactoring Post
     httpConfig(product, "POST");
@@ -65,30 +35,47 @@ function App() {
     setPrice("");
   }
 
-  // JSX for rendering the UI
+  // 8- Challenge
+  const handleRemove = (id) => {
+    httpConfig(id, "DELETE");
+  };
+
   return (
     <div className="App">
       <h2>List of products</h2>
+      {/* 6 - state de loading */}
       {loading && <p>Loading products .....</p>}
       {error && <p>{error}</p>}
       <ul>
-        {/* Render the list of products */}
         {items && items.map((product) => (
-          <li key={product.id}>{product.name} - £{product.price}</li>
+          <li key={product.id}>
+            {product.name} - £{product.price}
+            {/* 8- desafio */}
+            <button onClick={() => handleRemove(product.id)}>Remove</button>
+          </li>
         ))}
       </ul>
 
       <div className='add-product'>
-        {/* Form for adding new product */}
+        <p>Add product:</p>
         <form onSubmit={handleSubmit}>
           <label>
             Name:
-            <input type='text' value={name} name="name" onChange={(e) => setName(e.target.value)} />
+            <input
+              type='text'
+              value={name}
+              name="name"
+              onChange={(e) => setName(e.target.value)}
+            />
           </label>
-
           <label>
             Price:
-            <input type='number' value={price} name="price" onChange={(e) => setPrice(e.target.value)} />
+            <input
+              type='number'
+              value={price}
+              name="price"
+              onChange={(e) => setPrice(e.target.value)}
+            />
           </label>
           <input type='submit' value="add" />
         </form>

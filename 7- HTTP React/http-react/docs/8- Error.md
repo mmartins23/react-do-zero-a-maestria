@@ -1,4 +1,4 @@
-# Error 
+# Handling errors 
 
 In the provided code, error handling has been implemented in the `useFetch` custom hook. Let's break down how it works:
 
