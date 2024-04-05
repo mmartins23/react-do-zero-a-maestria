@@ -1,4 +1,4 @@
-# Loading
+# Loading status
 
 In the provided code snippet, a loading indicator is added to the application to indicate when data is being fetched. Let's break down how it works:
 
