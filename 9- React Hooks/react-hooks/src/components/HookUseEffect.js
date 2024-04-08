@@ -4,7 +4,7 @@ const HookUseEffect = () => {
 
     const [number, setNumber] = useState(1);
 
-    //1- useEffect without depedencies
+    //1- useEffect without dependencies
     useEffect(() => {
         console.log("useEffect has been activated!")
     })
@@ -12,6 +12,11 @@ const HookUseEffect = () => {
     const updateNumber = () => {
         setNumber(prevNumber => prevNumber + 1);
     }
+
+    //2- useEffect with dependencies
+    useEffect(() => {
+        console.log("This useEffect will be run only once!")
+    },[])
 
     return (
         <div>
