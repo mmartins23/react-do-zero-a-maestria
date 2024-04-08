@@ -31,6 +31,7 @@ const HookUseState = () => {
         <input type="text" value={number} onChange={(e) => setNumber(e.target.value)}/>
         <button onClick={handleSubmit}>Send</button>
         <p>Your favourite number is: {number}</p>
+        <hr/>
     </div>
   )
 }
