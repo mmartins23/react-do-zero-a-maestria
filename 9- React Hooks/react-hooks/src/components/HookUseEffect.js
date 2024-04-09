@@ -47,6 +47,7 @@ const HookUseEffect = () => {
             <button onClick={updateNumber}>Increase Number</button>
             <p>Lucky Number: {anotherNumber}</p>
             <button onClick={() => setAnotherNumber(anotherNumber+1)}>Increase number</button>
+            <hr/>
         </div>
     )
 }
