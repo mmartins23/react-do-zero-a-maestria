@@ -1,5 +1,5 @@
 import './App.css';
-import Destructuring from './components/Destructuring';
+import Destructuring, { Category } from './components/Destructuring';
 // Components
 import FirstComponent from './components/FirstComponent';
 import SecondComponent from './components/SecondComponent';
@@ -30,7 +30,7 @@ function App() {
       <FirstComponent/>
       {/* 4- Destructuring */}
       <SecondComponent name={'Second'}/>
-      <Destructuring post={'Learning Destructuring in JS'} comments={'Nice Work'} commentsQty={1} tags={["js", "ts"]}/>
+      <Destructuring post={'Learning Destructuring in JS'} comments={'Nice Work'} commentsQty={1} tags={["js", "ts"]} category={Category.JS}/>
       {/* 5- useState */}
       <State/>
     </div>
