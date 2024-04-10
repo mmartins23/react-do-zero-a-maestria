@@ -3,6 +3,7 @@ import Destructuring from './components/Destructuring';
 // Components
 import FirstComponent from './components/FirstComponent';
 import SecondComponent from './components/SecondComponent';
+import State from './components/State';
 
 function App() {
   // 1- Variables in TS
@@ -30,6 +31,8 @@ function App() {
       {/* 4- Destructuring */}
       <SecondComponent name={'Second'}/>
       <Destructuring post={'Learning Destructuring in JS'} comments={'Nice Work'} commentsQty={1} tags={["js", "ts"]}/>
+      {/* 5- useState */}
+      <State/>
     </div>
   );
 }
