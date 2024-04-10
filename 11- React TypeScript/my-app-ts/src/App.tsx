@@ -1,6 +1,8 @@
 import './App.css';
+import Destructuring from './components/Destructuring';
 // Components
 import FirstComponent from './components/FirstComponent';
+import SecondComponent from './components/SecondComponent';
 
 function App() {
   // 1- Variables in TS
@@ -25,6 +27,9 @@ function App() {
       <h3>{greeting(name)}</h3>
       {/* 3- Components */}
       <FirstComponent/>
+      {/* 4- Destructuring */}
+      <SecondComponent name={'Second'}/>
+      <Destructuring post={'Learning Destructuring in JS'} comments={'Nice Work'} commentsQty={1} tags={["js", "ts"]}/>
     </div>
   );
 }
