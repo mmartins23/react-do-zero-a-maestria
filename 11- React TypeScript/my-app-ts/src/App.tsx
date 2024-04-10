@@ -1,4 +1,6 @@
 import './App.css';
+// Components
+import FirstComponent from './components/FirstComponent';
 
 function App() {
   // 1- Variables in TS
@@ -21,6 +23,8 @@ function App() {
       <p>{isWorking && <p>{name} is working!</p>}</p>
       {/* 2- Function */}
       <h3>{greeting(name)}</h3>
+      {/* 3- Components */}
+      <FirstComponent/>
     </div>
   );
 }
