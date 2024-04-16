@@ -1,6 +1,12 @@
+import styles from './Footer.module.css';
+
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <footer className={styles.footer}>
+        <p>
+            <span>React + TS Todo</span> @{new Date().getFullYear()}
+        </p>
+    </footer>
   )
 }
 
