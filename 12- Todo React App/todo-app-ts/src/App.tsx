@@ -5,7 +5,6 @@ import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import Modal from "./components/Modal";
 
-
 // CSS
 import styles from './App.module.css';
 
@@ -18,6 +17,7 @@ import { useState } from "react";
 function App() {
 
   const [taskList, setTaskList] = useState<ITask[]>([]);
+  const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
 
   const deleteTask = (id: number) => {
     setTaskList(
@@ -34,13 +34,19 @@ function App() {
       }
   }
 
-  const editTask = (): void => {
+  const editTask = (task: ITask): void => {
     hideOrShowModal(true);
+    setTaskToUpdate(task);
   }
 
   return (
     <div>
-      <Modal children={<TaskForm btnText="Editar Tarefa" taskList={taskList}/>}/>
+      <Modal children={
+      <TaskForm 
+      btnText="Editar Tarefa" 
+      taskList={taskList}
+      task={taskToUpdate}
+      /> }/>
       <Header />
       <main className={styles.main}>
         <div>
@@ -48,7 +54,8 @@ function App() {
           <TaskForm
             btnText="Criar Tarefa"
             taskList={taskList}
-            setTaskList={setTaskList} />
+            setTaskList={setTaskList}
+             />
         </div>
 
         <div>

@@ -11,7 +11,7 @@ import { BsPencil, BsTrash } from "react-icons/bs";
 interface Props {
     taskList: ITask[];
     handleDelete(id: number): void;
-    handleEdit(): void;
+    handleEdit(task: ITask): void;
 }
 
 const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
@@ -26,7 +26,7 @@ const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
                         </div>
 
                         <div className={styles.actions}>
-                            <i onClick={() => handleEdit()}><BsPencil /></i>
+                            <i onClick={() => handleEdit(task)}><BsPencil /></i>
                             <i onClick={() => handleDelete(task.id)}><BsTrash /></i>
                         </div>
                     </div>
