@@ -3,6 +3,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
+import Modal from "./components/Modal";
+
 
 // CSS
 import styles from './App.module.css';
@@ -25,6 +27,7 @@ function App() {
 
   return (
     <div>
+      <Modal children={<TaskForm btnText="Editar Tarefa" taskList={taskList}/>}/>
       <Header />
       <main className={styles.main}>
         <div>
